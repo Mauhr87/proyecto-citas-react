@@ -11,30 +11,30 @@ const Formulario = () => {
             <form>
                 <div className="mb-8">
                     <label htmlFor="mascota" className="block mb-3 uppercase font-bold text-white">Nombre Mascota</label>
-                    <input className="bg-white/[.06] w-full p-4 rounded-md placeholder-gray-50/[.4] text-white" type="text" placeholder="Nombre de la Mascota" />
+                    <input className="outline-0 bg-white/[.06] w-full p-4 rounded-md placeholder-gray-50/[.4] text-white" type="text" placeholder="Nombre de la Mascota" />
                 </div>
 
                 <div className="mb-8">
                     <label htmlFor="mascota" className="block mb-3 uppercase font-bold text-white">Nombre Mascota</label>
-                    <input className="bg-white/[.06] w-full p-4 rounded-md placeholder-gray-50/[.4] text-white" type="text" placeholder="Nombre de la Mascota" />
+                    <input className="outline-0 bg-white/[.06] w-full p-4 rounded-md placeholder-gray-50/[.4] text-white" type="text" placeholder="Nombre de la Mascota" />
                 </div>
 
                 <div className="mb-8">
                     <label htmlFor="mascota" className="block mb-3 uppercase font-bold text-white">Nombre Mascota</label>
-                    <input className="bg-white/[.06] w-full p-4 rounded-md placeholder-gray-50/[.4] text-white" type="text" placeholder="Nombre de la Mascota" />
+                    <input className="outline-0 bg-white/[.06] w-full p-4 rounded-md placeholder-gray-50/[.4] text-white" type="text" placeholder="Nombre de la Mascota" />
                 </div>
 
                 <div className="mb-8">
                     <label htmlFor="mascota" className="block mb-3 uppercase font-bold text-white">Nombre Mascota</label>
-                    <input className="bg-white/[.06] w-full p-4 rounded-md placeholder-gray-50/[.4] text-white" type="text" placeholder="Nombre de la Mascota" />
+                    <input className="outline-0 bg-white/[.06] w-full p-4 rounded-md placeholder-gray-50/[.4] text-white" type="text" placeholder="Nombre de la Mascota" />
                 </div>
 
                 <div className="mb-8">
                     <label htmlFor="mascota" className="block mb-3 uppercase font-bold text-white">Nombre Mascota</label>
-                    <input className="bg-white/[.06] w-full p-4 rounded-md placeholder-gray-50/[.4] text-white" type="text" placeholder="Nombre de la Mascota" />
+                    <input className="outline-0 bg-white/[.06] w-full p-4 rounded-md placeholder-gray-50/[.4] text-white" type="text" placeholder="Nombre de la Mascota" />
                 </div>    
 
-                 <input type="submit" value="Agregar Paciente" className='bg-fuchsia-700 w-full p-3 text-white text-xl font-bold hover:bg-indigo-700 cursor-pointer transition-colors uppercase'/>        
+                 <input type="submit" value="Agregar Paciente" className='bg-fuchsia-700 w-full p-3 text-white text-xl font-bold hover:bg-fuchsia-800 cursor-pointer transition-colors uppercase'/>        
             </form>
         </div>
     </div>
