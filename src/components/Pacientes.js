@@ -9,7 +9,7 @@ const Pacientes = () => {
 
         </header>
 
-        <div className="p-10 bg-dark-purple/[.9]">
+        <div className="p-10 bg-dark-purple/[.7]">
           <p className="text-white text-xl mb-8 uppercase">Administra tus <span className="text-fuchsia-500 font-bold">Pacientes y Citas</span></p>
 
           <Paciente/>
