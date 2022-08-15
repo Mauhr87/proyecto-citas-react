@@ -13,7 +13,7 @@ const Formulario = ({pacientes, setPacientes}) => {
 
     const [error, setError] = useState(false)
 
-    const handlerSubmit = (e) =>{
+    const handleSubmit = (e) =>{
         e.preventDefault()
         
         if ([mascota, propietario, email, alta, sintomas].includes('')) {
@@ -24,6 +24,7 @@ const Formulario = ({pacientes, setPacientes}) => {
         setError(false)
 
         const objPaciente = {
+            id: Date.now(),
             mascota,
             propietario, 
             email,
@@ -51,7 +52,7 @@ const Formulario = ({pacientes, setPacientes}) => {
             <div className="p-10 bg-dark-purple/[.9]">
                 {error ? <Error>Todos los campos son obligatorios</Error> : ''}
                 <p className="text-white text-xl mb-8 uppercase">Añade Pacientes y <span className="text-fuchsia-700 font-bold">Administralos</span></p>
-                <form onSubmit={handlerSubmit}>
+                <form onSubmit={handleSubmit}>
                     <div className="mb-8">
                         <label htmlFor="mascota" className="block mb-3 uppercase font-bold text-white">Nombre Mascota</label>
                         <input className="outline-0 bg-white/[.06] w-full p-4 rounded-sm placeholder-gray-50/[.2] text-white" type="text" placeholder="Nombre de la Mascota" onChange={(e) => setMascota(e.target.value)} value={mascota}/>
