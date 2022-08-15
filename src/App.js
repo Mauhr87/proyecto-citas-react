@@ -1,23 +1,38 @@
 import logo from './logo.svg';
-import './App.css';
+import {useState, useEffect} from 'react'
+import Header from "./components/Header";
+import Formulario from "./components/Formulario";
+import Pacientes from "./components/Pacientes";
 
 function App() {
+
+  const [pacientes, setPacientes] = useState(() =>{
+    const savedPaciente = JSON.parse(localStorage.getItem('pacientes'))
+    return savedPaciente || "";
+  })
+
+  const [pacienteEditado, setPacienteEditado] = useState({})
+
+  useEffect(() => {
+    localStorage.setItem('pacientes', JSON.stringify(pacientes));
+  }, [pacientes]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container mx-auto pt-20 pb-20">
+      <Header/>
+      <div className="mt-12 md:flex">
+        <Formulario
+          pacientes={pacientes}
+          setPacientes={setPacientes}
+          pacienteEditado={pacienteEditado}
+          setPacienteEditado={setPacienteEditado}
+        />
+        <Pacientes
+          pacientes={pacientes}
+          setPacientes={setPacientes}
+          setPacienteEditado={setPacienteEditado}
+        />
+      </div>
     </div>
   );
 }
