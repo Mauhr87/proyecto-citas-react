@@ -1,13 +1,20 @@
 import logo from './logo.svg';
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import Header from "./components/Header";
 import Formulario from "./components/Formulario";
 import Pacientes from "./components/Pacientes";
 
 function App() {
 
-  const [pacientes, setPacientes] = useState([])
-  
+  const [pacientes, setPacientes] = useState(() =>{
+    const savedPaciente = JSON.parse(localStorage.getItem('pacientes'))
+    return savedPaciente || "";
+  })
+
+  useEffect(() => {
+    localStorage.setItem('pacientes', JSON.stringify(pacientes));
+  }, [pacientes]);
+
   return (
     <div className="container mx-auto pt-20 pb-20">
       <Header/>
