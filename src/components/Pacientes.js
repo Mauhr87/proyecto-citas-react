@@ -1,14 +1,12 @@
 import React from 'react'
 import Paciente from "./Paciente"
 
-const Pacientes = ({pacientes, setPacientes}) => {
+const Pacientes = ({pacientes, setPacientes, setPacienteEditado}) => {
 
   const getDeleteId = (id) => {
      const pacientesActualizados = pacientes.filter(paciente => paciente.id !== id)
-
      setPacientes(pacientesActualizados)
   }
-
 
   return (
     <div className="md:w-1/2 lg:w-3/5 mx-5">
@@ -18,7 +16,8 @@ const Pacientes = ({pacientes, setPacientes}) => {
         </header>
 
         <div className="p-10 bg-dark-purple/[.7]">
-          <p className="text-white text-xl mb-8 uppercase">Administra tus <span className="text-fuchsia-500 font-bold">Pacientes y Citas</span></p>
+          {pacientes.length ? <p className="text-white text-xl mb-8 uppercase">Administra tus <span className="text-fuchsia-500 font-bold">Pacientes y Citas</span></p> : <p className="text-white text-xl mb-8 uppercase">Agrega pacientes <span className="text-fuchsia-500 font-bold">y visualizalos aquí</span></p>}
+          
 
           {pacientes.map((paciente) =>{
             
@@ -26,6 +25,7 @@ const Pacientes = ({pacientes, setPacientes}) => {
               <Paciente
                 paciente={paciente}
                 getDeleteId={getDeleteId}
+                setPacienteEditado={setPacienteEditado}
                 key={paciente.id}
               />
             )

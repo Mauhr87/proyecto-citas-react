@@ -11,6 +11,8 @@ function App() {
     return savedPaciente || "";
   })
 
+  const [pacienteEditado, setPacienteEditado] = useState({})
+
   useEffect(() => {
     localStorage.setItem('pacientes', JSON.stringify(pacientes));
   }, [pacientes]);
@@ -22,10 +24,13 @@ function App() {
         <Formulario
           pacientes={pacientes}
           setPacientes={setPacientes}
+          pacienteEditado={pacienteEditado}
+          setPacienteEditado={setPacienteEditado}
         />
         <Pacientes
           pacientes={pacientes}
           setPacientes={setPacientes}
+          setPacienteEditado={setPacienteEditado}
         />
       </div>
     </div>

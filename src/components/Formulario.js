@@ -1,10 +1,11 @@
 import React from 'react'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import Error from "./Error"
 
 
-const Formulario = ({pacientes, setPacientes}) => {
+const Formulario = ({pacientes, setPacientes, pacienteEditado, setPacienteEditado}) => {
 
+    const [id, setId] = useState(0)
     const [mascota, setMascota] = useState('')
     const [propietario, setPropietario] = useState('')
     const [email, setEmail] = useState('')
@@ -12,6 +13,20 @@ const Formulario = ({pacientes, setPacientes}) => {
     const [sintomas, setSintomas] = useState('')
 
     const [error, setError] = useState(false)
+
+    useEffect(() => {
+        const emptyEditado = Object.keys(pacienteEditado).length === 0
+
+        if (!emptyEditado) {
+            setMascota(pacienteEditado.mascota)
+            setPropietario(pacienteEditado.propietario)
+            setEmail(pacienteEditado.email)
+            setAlta(pacienteEditado.alta)
+            setSintomas(pacienteEditado.sintomas)
+        }
+      
+    }, [pacienteEditado])
+    
 
     const handleSubmit = (e) =>{
         e.preventDefault()
@@ -22,9 +37,8 @@ const Formulario = ({pacientes, setPacientes}) => {
         }
         
         setError(false)
-
+     
         const objPaciente = {
-            id: Date.now(),
             mascota,
             propietario, 
             email,
@@ -32,13 +46,29 @@ const Formulario = ({pacientes, setPacientes}) => {
             sintomas
         }
 
-        setPacientes([...pacientes, objPaciente])
+        if (pacienteEditado.id) {
+            objPaciente.id = pacienteEditado.id
+            const pacientesActualizados = pacientes.map((pacienteActual) =>{
+                if (pacienteActual.id === pacienteEditado.id) {
+                    return objPaciente
+                }else{
+                    return pacienteActual
+                }
+            })
+            setPacientes(pacientesActualizados)
+            setPacienteEditado({})
+
+        }else{
+            objPaciente.id = Date.now()
+            setPacientes([...pacientes, objPaciente])
+        }
 
         setMascota('')
         setPropietario('')
         setEmail('')
         setAlta('')
         setSintomas('')
+
 
     }
 
@@ -78,7 +108,7 @@ const Formulario = ({pacientes, setPacientes}) => {
                         <textarea id="sintomas" className="outline-0 bg-white/[.06] w-full p-4 rounded-sm placeholder-gray-50/[.2] text-white" placeholder="Describe los Síntomas" onChange={(e) => setSintomas(e.target.value)} value={sintomas}></textarea>
                     </div>    
 
-                    <input type="submit" value="Agregar Paciente" className='bg-fuchsia-700 w-full py-4 px-3 text-white text-xl font-bold hover:bg-fuchsia-700/[.8] cursor-pointer transition-colors uppercase rounded-sm'/>        
+                    <input type="submit" value={pacienteEditado.id ? 'Editar Paciente' : 'Agregar Paciente'} className='bg-fuchsia-700 w-full py-4 px-3 text-white text-xl font-bold hover:bg-fuchsia-700/[.8] cursor-pointer transition-colors uppercase rounded-sm'/>        
                 </form>
             </div>
         </div>
