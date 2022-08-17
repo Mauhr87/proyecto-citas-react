@@ -6,10 +6,7 @@ import Pacientes from "./components/Pacientes";
 
 function App() {
 
-  const [pacientes, setPacientes] = useState(() =>{
-    const savedPaciente = JSON.parse(localStorage.getItem('pacientes'))
-    return savedPaciente || "";
-  })
+  const [pacientes, setPacientes] = useState(JSON.parse(localStorage.getItem('pacientes')) ?? [])
 
   const [pacienteEditado, setPacienteEditado] = useState({})
 

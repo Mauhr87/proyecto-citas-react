@@ -19,7 +19,10 @@ const Pacientes = ({pacientes, setPacientes, setPacienteEditado}) => {
           {pacientes.length ? <p className="text-white text-xl mb-8 uppercase">Administra tus <span className="text-fuchsia-500 font-bold">Pacientes y Citas</span></p> : <p className="text-white text-xl mb-8 uppercase">Agrega pacientes <span className="text-fuchsia-500 font-bold">y visualizalos aquí</span></p>}
           
 
-          {pacientes.map((paciente) =>{
+
+          {/* {console.log(pacientes)} */}
+
+          {pacientes.map( (paciente) =>{
             
             return (
               <Paciente
